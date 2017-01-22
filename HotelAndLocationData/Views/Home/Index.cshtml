@@ -1,0 +1,26 @@
+﻿@model IEnumerable<HotelAndLocationData.Models.Region>
+
+@{
+    ViewBag.Title = "Hotel and Location Data";
+}
+
+@foreach (var region in Model)
+{
+    <h2><a href="@Url.Action("Index", new { id = region.RegionCode })">@region.Name</a></h2>
+
+    foreach (var country in region.Countries)
+    {
+        <h3>@country.Name</h3>
+
+        foreach (var resort in country.Resorts)
+        {
+            <h4>@resort.Name</h4>
+
+            foreach (var hotel in resort.Hotels)
+            {
+                <h5>@hotel.Name</h5>
+            }
+        }
+    }
+}
+
